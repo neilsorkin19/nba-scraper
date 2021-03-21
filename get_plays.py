@@ -21,10 +21,24 @@ def append_to_frames(row):
     results = soup.find(id="__NEXT_DATA__")
     json_data = remove_tags(str(results))
     raw_data = json.loads(json_data)
+
+    # summary stats on plus minus
+    home_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["homeTeam"]["players"])
+    away_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["awayTeam"]["players"])
+
     # only interested in play by play
-    curr_df = pd.DataFrame(raw_data["props"]["pageProps"]["playByPlay"]["actions"])
-    print("Done with row " + str(list(row)[0]))
-    return curr_df
+    # curr_df = pd.DataFrame(raw_data["props"]["pageProps"]["playByPlay"]["actions"])
+
+    try:
+        curr_df = home_team_df.append(away_team_df, ignore_index=True)
+        normal = pd.json_normalize(curr_df['statistics'])
+        curr_df = pd.concat([curr_df, normal], axis=1)
+        print("Done with row " + str(list(row)[0]))
+        return curr_df
+
+    except KeyError as ke:
+        print(ke)
+        return None
 
 
 def main():
@@ -41,7 +55,7 @@ def main():
     print(len(frames))
     actions_df = pd.concat(frames)
     print(actions_df)
-    actions_df.to_csv(index=False, path_or_buf="actions.csv")
+    actions_df.to_csv(index=False, path_or_buf="plusMinusStats.csv")
 
 
 if __name__ == '__main__':
