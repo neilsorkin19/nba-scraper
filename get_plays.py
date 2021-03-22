@@ -55,7 +55,7 @@ def main():
     print(len(frames))
     actions_df = pd.concat(frames)
     print(actions_df)
-    actions_df.to_csv(index=False, path_or_buf="plusMinusStats.csv")
+    actions_df.to_csv(index=False, path_or_buf="2019stats.csv")
 
 
 if __name__ == '__main__':

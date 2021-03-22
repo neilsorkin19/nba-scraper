@@ -7,8 +7,8 @@ base_url = 'https://www.nba.com/games?date='
 final_base_url = 'https://www.nba.com'
 
 # this is the real season start
-curr_date = datetime.date(2018, 10, 16)  # october 16 2018
-end_date = datetime.date(2019, 4, 10)  # april 10 2019
+curr_date = datetime.date(2019, 10, 22)  # october 22 2019
+end_date = datetime.date(2020, 3, 11)  # march 11 2020
 delta = datetime.timedelta(days=1)
 
 games = []
