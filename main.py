@@ -34,7 +34,7 @@ def xyzplot(data):
     plt.show()
 
 
-actions = pd.read_csv("actions.csv").head(600000)
+actions = pd.read_csv("output/actions.csv").head(600000)
 # only interested in play by play
 # raw_data = json.load(open('game12018shots.json'))
 # actions = pd.DataFrame(raw_data["props"]["pageProps"]["playByPlay"]["actions"]).head(1000)

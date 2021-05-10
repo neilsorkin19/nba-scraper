@@ -23,16 +23,16 @@ def append_to_frames(row):
     raw_data = json.loads(json_data)
 
     # summary stats on plus minus
-    home_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["homeTeam"]["players"])
-    away_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["awayTeam"]["players"])
+    # home_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["homeTeam"]["players"])
+    # away_team_df = pd.DataFrame(raw_data["props"]["pageProps"]["game"]["awayTeam"]["players"])
 
     # only interested in play by play
-    # curr_df = pd.DataFrame(raw_data["props"]["pageProps"]["playByPlay"]["actions"])
+    curr_df = pd.DataFrame(raw_data["props"]["pageProps"]["playByPlay"]["actions"])
 
     try:
-        curr_df = home_team_df.append(away_team_df, ignore_index=True)
-        normal = pd.json_normalize(curr_df['statistics'])
-        curr_df = pd.concat([curr_df, normal], axis=1)
+        # curr_df = home_team_df.append(away_team_df, ignore_index=True)
+        # normal = pd.json_normalize(curr_df['statistics'])
+        # curr_df = pd.concat([curr_df, normal], axis=1)
         print("Done with row " + str(list(row)[0]))
         return curr_df
 
@@ -55,7 +55,7 @@ def main():
     print(len(frames))
     actions_df = pd.concat(frames)
     print(actions_df)
-    actions_df.to_csv(index=False, path_or_buf="2019stats.csv")
+    actions_df.to_csv(index=False, path_or_buf="output/2018_2019_regular_season_actions.csv")
 
 
 if __name__ == '__main__':
