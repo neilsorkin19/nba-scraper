@@ -9,5 +9,5 @@ Gets play-by-play data from the NBA website
 
 Note: get_plays.py uses multithreading to speed up the scraping. This will cause the games to be in an unpredictable order.
 
-Copy [this game's JSON data](game12018shots.json) into [this](http://jsonviewer.stack.hu/) JSON viewer to get an idea of the data contained in the NBA's website.
+Copy [this game's JSON data](output/game12018shots.json) into [this](http://jsonviewer.stack.hu/) JSON viewer to get an idea of the data contained in the NBA's website.
 
