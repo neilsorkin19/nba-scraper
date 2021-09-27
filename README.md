@@ -11,3 +11,4 @@ Note: get_plays.py uses multithreading to speed up the scraping. This will cause
 
 Copy [this game's JSON data](output/game12018shots.json) into [this](http://jsonviewer.stack.hu/) JSON viewer to get an idea of the data contained in the NBA's website.
 
+![Jason Tatum vs Kyrie Irving shooting chart](tatum_vs_irving.png)
